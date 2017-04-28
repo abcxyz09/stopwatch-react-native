@@ -16,7 +16,7 @@ import { AppRegistry,
 import FormatTime from 'minutes-seconds-milliseconds';
 import {styles} from './styles/styles';
 
-export class abc extends Component {
+export class stopwatch extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -110,4 +110,4 @@ handleStartPress() {
   }
 }
 
-AppRegistry.registerComponent('abc', () => abc);
+AppRegistry.registerComponent('stopwatch', () => stopwatch);
