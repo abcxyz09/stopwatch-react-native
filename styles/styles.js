@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   bottom: {
     flex: 2,
     backgroundColor: '#F0EFF5',
-    //justifyContent: 'space-around',
+    justifyContent: 'space-around',
     flexDirection: 'row',
     alignSelf: 'center'
   },
@@ -40,23 +40,23 @@ export const styles = StyleSheet.create({
     backgroundColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    //paddingTop: 30,
-    //paddingBottom: 30,
-    alignSelf: 'flex-start',
+    paddingTop: 30,
+    paddingBottom: 30,
+    alignSelf: 'center',
   },
   button: {
     flex:2,
-    height: 70,
-    width: 100,
+    height: 90,
+    width: 90,
     borderWidth: 5,
     flexDirection: 'column',
-    //borderRadius: 90,
+    borderRadius: 90,
     backgroundColor: 'white',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   runningWatch: {
-    height: 40,
+    height: 90,
     width: 90,
     borderWidth: 3,
     borderRadius: 90,
@@ -64,11 +64,11 @@ export const styles = StyleSheet.create({
     //justifyContent: 'space-around',
     //alignItems: 'center',
     fontSize:20,
-    //textAlign: 'center'
-    alignSelf:'flex-start',
+    //textAlign: 'center',
+    //alignSelf:'flex-start',
   },
   stopWatch: {
-    height: 40,
+    height: 90,
     width: 90,
     borderWidth: 3,
     borderRadius: 90,
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     //justifyContent: 'space-around',
     //alignItems: 'center',
     fontSize:20,
-    //textAlign: 'center'
-    alignSelf:'flex-end',
+    //textAlign: 'center',
+    //alignSelf:'flex-end',
   },
 });

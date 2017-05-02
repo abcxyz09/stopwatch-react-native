@@ -1,5 +1,6 @@
 /*
-Name: Jony Roy
+AppsName: Stopwatch
+Author: Jony Roy
 Email: jonyroyice@gmail.com
 github: github.com/abcxyz09
 */
@@ -38,19 +39,21 @@ export class stopwatch extends Component {
 
 
 startStopButton(){
-  //this also valid statement
-  //this.startPress = this.handleStartPress.bind(this);
   return(
-  //  const style = this.state.running ? styles.runningWatch : styles.stopWatch;
+    //const style = this.state.running ? styles.runningWatch : styles.stopWatch;
     <View style={styles.buttonWrapper}>
-    <TouchableHighlight underlayColor='red' onPress={this.startPress} >
-       <Text>
-         {this.state.running? 'STOP': 'START'}
-       </Text>
-    </TouchableHighlight>
-    <TouchableHighlight  underlayColor='red' onPress={this.resetPress.bind(this)} style={styles.button}>
-      <Text style={{fontSize:20}}>RESET</Text>
-    </TouchableHighlight>
+      <TouchableHighlight underlayColor='red' onPress={this.startPress} >
+        <View>
+          <Text>
+            {this.state.running? 'STOP': 'START'}
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight  underlayColor='red' onPress={this.resetPress.bind(this)} style={styles.button}>
+        <View>
+          <Text style={{fontSize:20}}>RESET</Text>
+        </View>
+      </TouchableHighlight>
   </View>
   );
 }
@@ -63,9 +66,9 @@ resetPress() {
 
 handleStartPress() {
   if(this.state.running) {
-    //this.setState({timer:this.state.timer + this.state.timeElapsed});
-    clearInterval(this.interval);
     this.setState({timer:this.state.timer2});
+    clearInterval(this.interval);
+
 
     this.setState({running: false,flag:true});
     return;
@@ -78,7 +81,7 @@ handleStartPress() {
           timeElapsed: new Date() - this.state.startTime,
           timer2: this.state.timer + this.state.timeElapsed,
           running: true });
-     },100);
+     },80);
   }
 
   appsTitle(){
@@ -98,13 +101,11 @@ handleStartPress() {
           <View style={styles.timerWrapper}>
              <Text style={styles.timer}>
                 {FormatTime(this.state.timer2)}{'\n'}
-                {this.state.totalElapsedTime+this.state.timeElapsed}
              </Text>
           </View>
-          <View style={styles.bottom}>
+          <View>
               {this.startStopButton()}
           </View>
-
       </View>
     );
   }
