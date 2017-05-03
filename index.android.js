@@ -15,7 +15,6 @@ import { AppRegistry,
          ListView,
         } from 'react-native';
 import FormatTime from 'minutes-seconds-milliseconds';
-import {styles} from './styles/styles';
 
 export class stopwatch extends Component {
   constructor(props){
@@ -30,26 +29,22 @@ export class stopwatch extends Component {
         totalElapsedTime:null,
       };
     this.startPress = this.handleStartPress.bind(this);
-    /*
-      Reading Document about bind
-      http://egorsmirnov.me/2015/08/16/react-and-es6-part3.html
-    */
+    this.resetPress=this.resetPress.bind(this);
   }
 
 
 
 startStopButton(){
   return(
-    //const style = this.state.running ? styles.runningWatch : styles.stopWatch;
-    <View style={styles.buttonWrapper}>
-      <TouchableHighlight underlayColor='red' onPress={this.startPress} >
+    <View style={{flexDirection: 'row',justifyContent: 'space-around',paddingTop: 0,paddingBottom: 0,}}>
+      <TouchableHighlight underlayColor='red' onPress={this.startPress} style={styles.button}>
         <View>
-          <Text>
+          <Text style={{fontSize:20,textAlign:'center'}}>
             {this.state.running? 'STOP': 'START'}
           </Text>
         </View>
       </TouchableHighlight>
-      <TouchableHighlight  underlayColor='red' onPress={this.resetPress.bind(this)} style={styles.button}>
+      <TouchableHighlight  underlayColor='red' onPress={this.resetPress} style={styles.button}>
         <View>
           <Text style={{fontSize:20}}>RESET</Text>
         </View>
@@ -73,6 +68,7 @@ handleStartPress() {
     this.setState({running: false,flag:true});
     return;
 }
+
   this.setState({startTime: new Date(),
     totalElapsedTime:this.state.totalElapsedTime + this.state.timeElapsed});
   this.setState({flag: true});
@@ -86,24 +82,24 @@ handleStartPress() {
 
   appsTitle(){
     return(
-      <View style={styles.header}>
-         <Text style={styles.title}>Stopwatch</Text>
+      <View style={{borderBottomWidth: 0.5,paddingTop: 10,paddingBottom: 0,backgroundColor: '#F9F9F9'}}>
+         <Text style={{alignSelf: 'center',fontWeight: '600',fontSize: 25,}}>Stopwatch</Text>
       </View>
     );
   }
 
   render(){
     return (
-      <View style={styles.container}>
-          <View style={styles.top}>
+      <View style={{flex:1,justifyContent:'space-between'}}>
+          <View style={{flex:1}}>
               {this.appsTitle()}
           </View>
-          <View style={styles.timerWrapper}>
-             <Text style={styles.timer}>
+          <View style={{flex: 1,backgroundColor: '#FFFFFF',justifyContent: 'center',alignItems:'flex-end'}}>
+             <Text style={{fontSize: 70,alignSelf:'center'}}>
                 {FormatTime(this.state.timer2)}{'\n'}
              </Text>
           </View>
-          <View>
+          <View style={{flex:1}} >
               {this.startStopButton()}
           </View>
       </View>
@@ -111,4 +107,17 @@ handleStartPress() {
   }
 }
 
+export const styles = StyleSheet.create({
+  button: {
+    height: 100,
+    width: 100,
+    paddingRight:10,
+    borderWidth: 2,
+    flexDirection: 'row',
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 AppRegistry.registerComponent('stopwatch', () => stopwatch);
